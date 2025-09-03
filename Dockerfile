@@ -50,7 +50,11 @@ USER medusa
 COPY --from=installer /app .
 
 WORKDIR /app/apps/backend
+RUN yarn global add @medusajs/medusa-cli
 
-# RUN yarn db:migrate
 
-CMD ["yarn", "start"]
+# Expose the port Medusa runs on
+EXPOSE 9000
+
+# Start with migrations and then the development server
+CMD ["sh","./start.sh"]

@@ -3,15 +3,13 @@ services:
   database:
     image: postgres:13-alpine
     container_name: mercur_database
-    # command:
-    #   ["yarn", "db:migrate", "&&", "yarn", "db:seed", "&&", "yarn", "start"]
     restart: always
     environment:
       - POSTGRES_USER=mercur_user
       - POSTGRES_PASSWORD=mercur_password
       - POSTGRES_DB=mercur_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
   redis:
@@ -25,7 +23,8 @@ services:
   backend:
     build: .
     container_name: mercur_backend
-    restart: always
+    # command: ["npx", "medusa", "db:migrate"]
+    restart: unless-stopped
     ports:
       - "9000:9000"
     volumes:
