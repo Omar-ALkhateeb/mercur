@@ -8,16 +8,12 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 # Set working directory
 WORKDIR /app
-RUN yarn global add turbo
 COPY . .
 
 RUN yarn install
-
-RUN yarn turbo build
+RUN yarn build
 
 WORKDIR /app/apps/backend
-# RUN yarn global add @medusajs/medusa-cli
-
 
 # Expose the port Medusa runs on
 EXPOSE 9000

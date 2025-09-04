@@ -1,10 +1,8 @@
 #!/bin/sh
+yarn medusa db:create && yarn medusa db:migrate
 
 echo "Running database migrations..."
-yarn medusa db:migrate
-
-echo "Seeding database..."
-yarn medusa exec ./src/scripts/seed.ts || echo "Seeding failed, continuing..."
+yarn run seed || echo "Seeding failed, continuing..."
 
 echo "Starting Medusa development server..."
 yarn medusa develop --types=false
