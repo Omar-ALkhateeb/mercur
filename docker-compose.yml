@@ -37,6 +37,8 @@ services:
       - JWT_SECRET=your-secret-key-that-you-should-change
       - COOKIE_SECRET=your-cookie-secret-that-you-should-change
       - NODE_ENV=production
+    env_file:
+      - .env
     depends_on:
       - database
       - redis
