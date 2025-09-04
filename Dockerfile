@@ -13,8 +13,6 @@ COPY . .
 RUN yarn install
 RUN yarn build
 
-WORKDIR /app/apps/backend
-
 # Expose the port Medusa runs on
 EXPOSE 9000
 
