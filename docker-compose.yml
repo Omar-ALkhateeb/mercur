@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=mercur_password
       - POSTGRES_DB=mercur_db
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -39,7 +39,7 @@ services:
       - REDIS_URL=redis://redis:6379
       - JWT_SECRET=your-secret-key-that-you-should-change
       - COOKIE_SECRET=your-cookie-secret-that-you-should-change
-      - NODE_ENV=production
+      - NODE_ENV=development
     depends_on:
       - database
       - redis
