@@ -32,6 +32,8 @@ services:
     ports:
       - "9000:9000"
     environment:
+      - ALGOLIA_APP_ID=XXX
+      - ALGOLIA_API_KEY=supersecret
       - DATABASE_URL=postgres://mercur_user:mercur_password@database:5432/mercur_db
       - DB_NAME=mercur_db
       - REDIS_URL=redis://redis:6379
