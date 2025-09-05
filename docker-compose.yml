@@ -12,6 +12,8 @@ services:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - medusa_network
   redis:
     image: redis:6-alpine
     container_name: mercur_redis
@@ -20,6 +22,8 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+    networks:
+      - medusa_network
   backend:
     build: .
     container_name: mercur_backend
@@ -37,7 +41,13 @@ services:
     depends_on:
       - database
       - redis
+    networks:
+      - medusa_network
 
 volumes:
   postgres_data:
   redis_data:
+
+networks:
+  medusa_network:
+    driver: bridge
