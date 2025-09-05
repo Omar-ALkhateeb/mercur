@@ -8,11 +8,9 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 # Set working directory
 WORKDIR /app
-COPY package.json ./
-COPY yarn.lock ./
+COPY . .
 
 RUN yarn install
-COPY . .
 RUN yarn build
 
 # Expose the port Medusa runs on
