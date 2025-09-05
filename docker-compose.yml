@@ -27,8 +27,6 @@ services:
     restart: unless-stopped
     ports:
       - "9000:9000"
-    volumes:
-      - .:/app
     environment:
       - DATABASE_URL=postgres://mercur_user:mercur_password@database:5432/mercur_db
       - DB_NAME=mercur_db
