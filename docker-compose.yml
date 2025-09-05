@@ -27,9 +27,6 @@ services:
     restart: unless-stopped
     ports:
       - "9000:9000"
-    volumes:
-      - .:/app
-      - /app/node_modules
     environment:
       - DATABASE_URL=postgres://mercur_user:mercur_password@database:5432/mercur_db
       - DB_NAME=mercur_db
@@ -37,8 +34,6 @@ services:
       - JWT_SECRET=your-secret-key-that-you-should-change
       - COOKIE_SECRET=your-cookie-secret-that-you-should-change
       - NODE_ENV=production
-    env_file:
-      - .env
     depends_on:
       - database
       - redis
